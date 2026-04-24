@@ -1,1 +1,65 @@
-
+{
+  "version": 1,
+  "author": "G. Thamarai Selvan",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -36,
+      "left": 174.6,
+      "attrs": { "volume": "0.1" }
+    },
+    { "type": "wokwi-mpu6050", "id": "imu1", "top": 32.62, "left": -93.68, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -147.6,
+      "left": -92.2,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": -138,
+      "left": 61.4,
+      "attrs": { "color": "yellow" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led3",
+      "top": -147.6,
+      "left": -15.4,
+      "attrs": { "color": "limegreen" }
+    },
+    {
+      "type": "board-ssd1306",
+      "id": "oled1",
+      "top": 70.34,
+      "left": 307.43,
+      "attrs": { "i2cAddress": "0x3c" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "bz1:1", "esp:GND.3", "green", [ "v38.4", "h-96" ] ],
+    [ "imu1:VCC", "esp:3V3", "red", [ "v-9.6", "h19.28" ] ],
+    [ "imu1:GND", "esp:GND.1", "black", [ "v115.2", "h28.88" ] ],
+    [ "esp:21", "imu1:SDA", "green", [ "h-148.76", "v-38.4" ] ],
+    [ "imu1:SCL", "esp:22", "green", [ "v0" ] ],
+    [ "led2:C", "esp:GND.2", "green", [ "v0" ] ],
+    [ "led3:C", "esp:GND.1", "green", [ "v0" ] ],
+    [ "led1:C", "esp:GND.1", "green", [ "v0" ] ],
+    [ "bz1:2", "esp:13", "green", [ "v0" ] ],
+    [ "led1:A", "esp:27", "green", [ "v0" ] ],
+    [ "led3:A", "esp:25", "green", [ "v0" ] ],
+    [ "led2:A", "esp:26", "green", [ "v0" ] ],
+    [ "oled1:GND", "esp:GND.2", "black", [ "v0" ] ],
+    [ "oled1:VCC", "esp:3V3", "red", [ "v-115.2", "h0.15" ] ],
+    [ "oled1:SCL", "esp:22", "green", [ "v0" ] ],
+    [ "oled1:SDA", "esp:21", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
